@@ -21,7 +21,7 @@ Tujuan utama proyek ini adalah mendemonstrasikan penerapan nyata struktur data d
 | No | Nama | NIM |
 |----|------|-----|
 | 1 | LULU MAULANA MALIK | 250401010517 |
-| 2 | A. M. NABIL AIENDRA DZIKRA | 250401010507 |
+| 2 | A. M. NABIL AIENDRA DZIKRA | 250401010507 |  
 | 3 | MUHAMMAD FARIS | 250401010509 |
 
 ---
