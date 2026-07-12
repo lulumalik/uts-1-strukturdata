@@ -37,3 +37,19 @@ bin/e-health-klinik.exe
 7. **Riwayat Medis** - push/pop (stack)
 8. **Struktur Poli Klinik** - tree (Umum, Gigi, Anak, Penyakit Dalam)
 9. **Statistik Pasien**
+10. **Graph Rujukan Poli** - BFS & DFS untuk jaringan rujukan
+11. **Sorting Data Pasien** - Bubble, Selection, Insertion Sort
+12. **Searching & Big O** - Linear vs Binary Search + analisis kompleksitas
+
+## Struktur Data & Algoritma
+
+| Modul | Konsep | Manfaat E-Health |
+|-------|--------|------------------|
+| Array + Linked List | Penyimpanan pasien | CRUD rekam medis |
+| Queue | FIFO | Antrian pelayanan |
+| Stack | LIFO | Riwayat pemeriksaan |
+| Tree | Hierarki | Validasi poli klinik |
+| Graph | Vertex + Edge | Jalur rujukan antar unit |
+| BFS / DFS | Traversal graph | Rujukan terpendek / cek jalur |
+| Sorting | O(n²) | Daftar pasien terurut |
+| Searching | O(n) vs O(log n) | Cari No RM lebih efisien |

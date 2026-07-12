@@ -6,6 +6,8 @@
 #include "../include/queue.h"
 #include "../include/stack.h"
 #include "../include/tree.h"
+#include "../include/graph.h"
+#include "../include/sortsearch.h"
 
 using namespace std;
 
@@ -15,6 +17,7 @@ LinkedListPasien linkedList;
 QueueAntrian antrian;
 StackRiwayat riwayat;
 TreePoli treePoli;
+GraphRujukan graphRujukan;
 
 void bersihkanBuffer() {
     cin.clear();
@@ -36,6 +39,9 @@ void tampilkanMenu() {
     cout << "  8. Riwayat Medis (Stack)\n";
     cout << "  9. Struktur Poli Klinik (Tree)\n";
     cout << " 10. Statistik Pasien\n";
+    cout << " 11. Graph Rujukan Poli (BFS/DFS)\n";
+    cout << " 12. Sorting Data Pasien\n";
+    cout << " 13. Searching & Analisis Big O\n";
     cout << "  0. Keluar\n";
     cout << "========================================\n";
     cout << "Pilih menu: ";
@@ -67,19 +73,16 @@ void tambahPasien() {
     cout << "\n--- TAMBAH DATA PASIEN ---\n";
     Pasien p = inputPasien();
 
-    // Error handling: data kosong
     if (p.noRM.empty() || p.nama.empty() || p.poli.empty()) {
         cout << "[ERROR] Data tidak boleh kosong!\n";
         return;
     }
 
-    // Error handling: duplikasi nomor rekam medis
     if (linkedList.duplikat(p.noRM) || arrayPasien.duplikat(p.noRM)) {
         cout << "[ERROR] Duplikasi data! No RM '" << p.noRM << "' sudah terdaftar.\n";
         return;
     }
 
-    // Validasi poli menggunakan tree
     if (!treePoli.cariPoli(p.poli)) {
         cout << "[ERROR] Poli '" << p.poli << "' tidak ditemukan.\n";
         cout << "Poli tersedia: Umum, Gigi, Anak, Penyakit Dalam\n";
@@ -244,11 +247,157 @@ void statistikPasien() {
     cout << "  Total pasien (Array)       : " << arrayPasien.getJumlah() << "\n";
     cout << "  Pasien dalam antrian       : " << antrian.ukuran() << "\n";
     cout << "  Riwayat pemeriksaan        : " << riwayat.ukuran() << "\n";
+    cout << "  Vertex graph rujukan       : " << graphRujukan.getJumlahVertex() << "\n";
     cout << "  Kapasitas maksimal/bulan   : " << MAX_PASIEN << "\n";
+}
+
+void kelolaGraphRujukan() {
+    int sub;
+    cout << "\n--- GRAPH RUJUKAN POLI (BFS / DFS) ---\n";
+    cout << "  1. Tampilkan Jaringan Rujukan\n";
+    cout << "  2. Telusuri BFS (Breadth First Search)\n";
+    cout << "  3. Telusuri DFS (Depth First Search)\n";
+    cout << "  4. Cari Jalur Rujukan Terpendek (BFS)\n";
+    cout << "  5. Cek Ada Jalur Rujukan (DFS)\n";
+    cout << "Pilih: ";
+    cin >> sub;
+    bersihkanBuffer();
+
+    if (sub == 1) {
+        graphRujukan.tampilkan();
+    } else if (sub == 2) {
+        string mulai;
+        cout << "Poli awal (contoh: Umum): ";
+        getline(cin, mulai);
+        graphRujukan.bfs(mulai);
+    } else if (sub == 3) {
+        string mulai;
+        cout << "Poli awal (contoh: Umum): ";
+        getline(cin, mulai);
+        graphRujukan.dfs(mulai);
+    } else if (sub == 4) {
+        string asal, tujuan;
+        cout << "Poli asal   : ";
+        getline(cin, asal);
+        cout << "Poli tujuan : ";
+        getline(cin, tujuan);
+        graphRujukan.jalurTerpendek(asal, tujuan);
+    } else if (sub == 5) {
+        string asal, tujuan;
+        cout << "Poli asal   : ";
+        getline(cin, asal);
+        cout << "Poli tujuan : ";
+        getline(cin, tujuan);
+        if (graphRujukan.adaJalur(asal, tujuan)) {
+            cout << "[SUKSES] Ada jalur rujukan dari '" << asal
+                 << "' ke '" << tujuan << "' (DFS).\n";
+            cout << "  Kompleksitas DFS: O(V + E)\n";
+        } else {
+            cout << "[INFO] Tidak ada jalur rujukan dari '" << asal
+                 << "' ke '" << tujuan << "'.\n";
+        }
+    } else {
+        cout << "[ERROR] Pilihan tidak valid.\n";
+    }
+}
+
+KriteriaSort pilihKriteriaSort() {
+    int k;
+    cout << "Kriteria urut:\n";
+    cout << "  1. No RM\n";
+    cout << "  2. Nama\n";
+    cout << "  3. Umur\n";
+    cout << "Pilih: ";
+    cin >> k;
+    bersihkanBuffer();
+
+    if (k == 2) return BY_NAMA;
+    if (k == 3) return BY_UMUR;
+    return BY_NORM;
+}
+
+void kelolaSorting() {
+    int sub;
+    cout << "\n--- SORTING DATA PASIEN ---\n";
+    cout << "  1. Bubble Sort\n";
+    cout << "  2. Selection Sort\n";
+    cout << "  3. Insertion Sort\n";
+    cout << "  4. Tampilkan Data Array\n";
+    cout << "Pilih: ";
+    cin >> sub;
+    bersihkanBuffer();
+
+    if (sub == 4) {
+        cout << "\n--- DATA PASIEN (ARRAY) ---\n";
+        arrayPasien.tampilkan();
+        return;
+    }
+
+    if (sub < 1 || sub > 3) {
+        cout << "[ERROR] Pilihan tidak valid.\n";
+        return;
+    }
+
+    if (arrayPasien.getJumlah() == 0) {
+        cout << "[ERROR] Belum ada data pasien untuk diurutkan.\n";
+        return;
+    }
+
+    KriteriaSort kriteria = pilihKriteriaSort();
+
+    if (sub == 1) bubbleSort(arrayPasien, kriteria);
+    else if (sub == 2) selectionSort(arrayPasien, kriteria);
+    else insertionSort(arrayPasien, kriteria);
+
+    cout << "\nHasil setelah sorting:\n";
+    arrayPasien.tampilkan();
+}
+
+void kelolaSearchingBigO() {
+    int sub;
+    cout << "\n--- SEARCHING & ANALISIS BIG O ---\n";
+    cout << "  1. Bandingkan Linear vs Binary Search\n";
+    cout << "  2. Tampilkan Analisis Big O Sistem\n";
+    cout << "  3. Sort No RM dulu lalu Binary Search\n";
+    cout << "Pilih: ";
+    cin >> sub;
+    bersihkanBuffer();
+
+    if (sub == 1) {
+        string noRM;
+        cout << "Masukkan No RM yang dicari: ";
+        getline(cin, noRM);
+        if (noRM.empty()) {
+            cout << "[ERROR] No RM tidak boleh kosong!\n";
+            return;
+        }
+        bandingkanPencarian(arrayPasien, noRM);
+    } else if (sub == 2) {
+        tampilkanAnalisisBigO();
+    } else if (sub == 3) {
+        if (arrayPasien.getJumlah() == 0) {
+            cout << "[ERROR] Belum ada data pasien.\n";
+            return;
+        }
+        cout << "Mengurutkan array berdasarkan No RM (Bubble Sort)...\n";
+        bubbleSort(arrayPasien, BY_NORM);
+
+        string noRM;
+        cout << "Masukkan No RM yang dicari: ";
+        getline(cin, noRM);
+        if (noRM.empty()) {
+            cout << "[ERROR] No RM tidak boleh kosong!\n";
+            return;
+        }
+        bandingkanPencarian(arrayPasien, noRM);
+    } else {
+        cout << "[ERROR] Pilihan tidak valid.\n";
+    }
 }
 
 int main() {
     treePoli.inisialisasi();
+    graphRujukan.inisialisasi();
 
     cout << "Selamat datang di Sistem Klinik E-Health\n";
     cout << "Struktur Poli Klinik:\n";
@@ -280,6 +429,9 @@ int main() {
                 treePoli.tampilkan();
                 break;
             case 10: statistikPasien(); break;
+            case 11: kelolaGraphRujukan(); break;
+            case 12: kelolaSorting(); break;
+            case 13: kelolaSearchingBigO(); break;
             case 0:
                 cout << "\nTerima kasih. Program selesai.\n";
                 break;

@@ -1,7 +1,7 @@
 # Makefile - Sistem Klinik E-Health (Struktur Data & Algoritma UTS)
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -Iinclude
-SRC = src/main.cpp src/array.cpp src/linkedlist.cpp src/queue.cpp src/stack.cpp src/tree.cpp
+SRC = src/main.cpp src/array.cpp src/linkedlist.cpp src/queue.cpp src/stack.cpp src/tree.cpp src/graph.cpp src/sortsearch.cpp
 TARGET = bin/e-health-klinik
 
 .PHONY: all run clean

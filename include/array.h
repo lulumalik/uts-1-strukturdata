@@ -23,6 +23,11 @@ public:
     // fungsi untuk mendapatkan jumlah data pasien
     int getJumlah() const;
     bool duplikat(const std::string& noRM) const;
+
+    // akses elemen untuk sorting & searching
+    Pasien getAt(int indeks) const;
+    void setAt(int indeks, const Pasien& p);
+    void tukar(int i, int j);
 };
 
 #endif

@@ -12,6 +12,8 @@ g++ -std=c++17 -Wall -Wextra -Iinclude \
     src/queue.cpp \
     src/stack.cpp \
     src/tree.cpp \
+    src/graph.cpp \
+    src/sortsearch.cpp \
     -o bin/e-health-klinik
 
 if [ $? -eq 0 ]; then

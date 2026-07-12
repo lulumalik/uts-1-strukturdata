@@ -64,3 +64,19 @@ bool ArrayPasien::duplikat(const std::string& noRM) const {
     }
     return false;
 }
+
+Pasien ArrayPasien::getAt(int indeks) const {
+    return data[indeks];
+}
+
+void ArrayPasien::setAt(int indeks, const Pasien& p) {
+    if (indeks >= 0 && indeks < jumlah)
+        data[indeks] = p;
+}
+
+void ArrayPasien::tukar(int i, int j) {
+    if (i < 0 || j < 0 || i >= jumlah || j >= jumlah) return;
+    Pasien temp = data[i];
+    data[i] = data[j];
+    data[j] = temp;
+}
