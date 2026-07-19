@@ -1,0 +1,695 @@
+﻿Selamat datang di Sistem Klinik E-Health
+Struktur Poli Klinik:
+  Klinik E-Health
+    - Poli Umum
+    - Poli Gigi
+    - Poli Anak
+    - Poli Penyakit Dalam
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+--- TAMBAH DATA PASIEN ---
+No Rekam Medis : Nama Pasien    : Umur           : Poli Tujuan    : Status         : [SUKSES] Pasien 'Citra Dewi' berhasil ditambahkan.
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+--- TAMBAH DATA PASIEN ---
+No Rekam Medis : Nama Pasien    : Umur           : Poli Tujuan    : Status         : [SUKSES] Pasien 'Andi Pratama' berhasil ditambahkan.
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+--- TAMBAH DATA PASIEN ---
+No Rekam Medis : Nama Pasien    : Umur           : Poli Tujuan    : Status         : [SUKSES] Pasien 'Budi Santoso' berhasil ditambahkan.
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+--- TAMBAH DATA PASIEN ---
+No Rekam Medis : Nama Pasien    : Umur           : Poli Tujuan    : Status         : [SUKSES] Pasien 'Eka Putri' berhasil ditambahkan.
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+--- TAMBAH DATA PASIEN ---
+No Rekam Medis : Nama Pasien    : Umur           : Poli Tujuan    : Status         : [SUKSES] Pasien 'Dina Lestari' berhasil ditambahkan.
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+--- DATA PASIEN (ARRAY) ---
+  [0] RM005 - Citra Dewi (22 thn) - Gigi - Menunggu
+  [1] RM001 - Andi Pratama (35 thn) - Umum - Menunggu
+  [2] RM003 - Budi Santoso (28 thn) - Anak - Menunggu
+  [3] RM002 - Eka Putri (40 thn) - Penyakit Dalam - Menunggu
+  [4] RM004 - Dina Lestari (19 thn) - Umum - Menunggu
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+--- SORTING DATA PASIEN ---
+  1. Bubble Sort
+  2. Selection Sort
+  3. Insertion Sort
+  4. Tampilkan Data Array
+Pilih: Kriteria urut:
+  1. No RM
+  2. Nama
+  3. Umur
+Pilih: [SUKSES] Bubble Sort selesai (kriteria: Nama).
+  Jumlah tukar : 3
+  Big O        : O(n^2) waktu, O(1) ruang
+
+Hasil setelah sorting:
+  [0] RM001 - Andi Pratama (35 thn) - Umum - Menunggu
+  [1] RM003 - Budi Santoso (28 thn) - Anak - Menunggu
+  [2] RM005 - Citra Dewi (22 thn) - Gigi - Menunggu
+  [3] RM004 - Dina Lestari (19 thn) - Umum - Menunggu
+  [4] RM002 - Eka Putri (40 thn) - Penyakit Dalam - Menunggu
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+--- DATA PASIEN (ARRAY) ---
+  [0] RM001 - Andi Pratama (35 thn) - Umum - Menunggu
+  [1] RM003 - Budi Santoso (28 thn) - Anak - Menunggu
+  [2] RM005 - Citra Dewi (22 thn) - Gigi - Menunggu
+  [3] RM004 - Dina Lestari (19 thn) - Umum - Menunggu
+  [4] RM002 - Eka Putri (40 thn) - Penyakit Dalam - Menunggu
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+--- SORTING DATA PASIEN ---
+  1. Bubble Sort
+  2. Selection Sort
+  3. Insertion Sort
+  4. Tampilkan Data Array
+Pilih: Kriteria urut:
+  1. No RM
+  2. Nama
+  3. Umur
+Pilih: [SUKSES] Selection Sort selesai (kriteria: Umur).
+  Jumlah tukar : 2
+  Big O        : O(n^2) waktu, O(1) ruang
+
+Hasil setelah sorting:
+  [0] RM004 - Dina Lestari (19 thn) - Umum - Menunggu
+  [1] RM005 - Citra Dewi (22 thn) - Gigi - Menunggu
+  [2] RM003 - Budi Santoso (28 thn) - Anak - Menunggu
+  [3] RM001 - Andi Pratama (35 thn) - Umum - Menunggu
+  [4] RM002 - Eka Putri (40 thn) - Penyakit Dalam - Menunggu
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+--- DATA PASIEN (ARRAY) ---
+  [0] RM004 - Dina Lestari (19 thn) - Umum - Menunggu
+  [1] RM005 - Citra Dewi (22 thn) - Gigi - Menunggu
+  [2] RM003 - Budi Santoso (28 thn) - Anak - Menunggu
+  [3] RM001 - Andi Pratama (35 thn) - Umum - Menunggu
+  [4] RM002 - Eka Putri (40 thn) - Penyakit Dalam - Menunggu
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+--- SORTING DATA PASIEN ---
+  1. Bubble Sort
+  2. Selection Sort
+  3. Insertion Sort
+  4. Tampilkan Data Array
+Pilih: Kriteria urut:
+  1. No RM
+  2. Nama
+  3. Umur
+Pilih: [SUKSES] Insertion Sort selesai (kriteria: No RM).
+  Jumlah geser : 8
+  Big O        : O(n^2) waktu (terbaik O(n) jika hampir terurut), O(1) ruang
+
+Hasil setelah sorting:
+  [0] RM001 - Andi Pratama (35 thn) - Umum - Menunggu
+  [1] RM002 - Eka Putri (40 thn) - Penyakit Dalam - Menunggu
+  [2] RM003 - Budi Santoso (28 thn) - Anak - Menunggu
+  [3] RM004 - Dina Lestari (19 thn) - Umum - Menunggu
+  [4] RM005 - Citra Dewi (22 thn) - Gigi - Menunggu
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+--- DATA PASIEN (ARRAY) ---
+  [0] RM001 - Andi Pratama (35 thn) - Umum - Menunggu
+  [1] RM002 - Eka Putri (40 thn) - Penyakit Dalam - Menunggu
+  [2] RM003 - Budi Santoso (28 thn) - Anak - Menunggu
+  [3] RM004 - Dina Lestari (19 thn) - Umum - Menunggu
+  [4] RM005 - Citra Dewi (22 thn) - Gigi - Menunggu
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+--- SEARCHING & ANALISIS BIG O ---
+  1. Bandingkan Linear vs Binary Search
+  2. Tampilkan Analisis Big O Sistem
+  3. Sort No RM dulu lalu Binary Search
+Pilih: Masukkan No RM yang dicari: 
+--- PERBANDINGAN SEARCHING (Big O) ---
+  Target No RM : RM003
+  Jumlah data  : 5
+
+  Linear Search:
+    Hasil        : Ditemukan
+    Perbandingan : 3
+    Big O        : O(n)
+
+  Binary Search:
+    Hasil        : Ditemukan
+    Perbandingan : 1
+    Big O        : O(log n)
+    Catatan      : Array harus sudah diurutkan berdasarkan No RM.
+
+  Data pasien:
+    No RM  : RM003
+    Nama   : Budi Santoso
+    Umur   : 28 tahun
+    Poli   : Anak
+    Status : Menunggu
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+--- SEARCHING & ANALISIS BIG O ---
+  1. Bandingkan Linear vs Binary Search
+  2. Tampilkan Analisis Big O Sistem
+  3. Sort No RM dulu lalu Binary Search
+Pilih: 
+========================================
+  ANALISIS BIG O ΓÇö KLINIK E-HEALTH
+========================================
+
+Struktur Data:
+  Array akses indeks     : O(1)
+  Array/LL sequential    : O(n)
+  Queue enqueue/dequeue  : O(1) / O(n)*
+  Stack push/pop         : O(1)
+  Tree cari poli         : O(n)
+  Graph BFS / DFS        : O(V + E)
+  *dequeue menggeser elemen (implementasi array)
+
+Sorting:
+  Bubble Sort            : O(n^2)
+  Selection Sort         : O(n^2)
+  Insertion Sort         : O(n^2) worst, O(n) best
+
+Searching:
+  Linear Search          : O(n)
+  Binary Search          : O(log n) ΓÇö butuh data terurut
+
+Manfaat bagi pengguna e-health:
+  - Sorting memudahkan petugas melihat daftar pasien teratur
+  - Binary Search mempercepat pencarian No RM pada data besar
+  - BFS memberi jalur rujukan terpendek antar poli
+========================================
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+--- SEARCHING & ANALISIS BIG O ---
+  1. Bandingkan Linear vs Binary Search
+  2. Tampilkan Analisis Big O Sistem
+  3. Sort No RM dulu lalu Binary Search
+Pilih: Mengurutkan array berdasarkan No RM (Bubble Sort)...
+[SUKSES] Bubble Sort selesai (kriteria: No RM).
+  Jumlah tukar : 0
+  Big O        : O(n^2) waktu, O(1) ruang
+Masukkan No RM yang dicari: 
+--- PERBANDINGAN SEARCHING (Big O) ---
+  Target No RM : RM002
+  Jumlah data  : 5
+
+  Linear Search:
+    Hasil        : Ditemukan
+    Perbandingan : 2
+    Big O        : O(n)
+
+  Binary Search:
+    Hasil        : Ditemukan
+    Perbandingan : 3
+    Big O        : O(log n)
+    Catatan      : Array harus sudah diurutkan berdasarkan No RM.
+
+  Data pasien:
+    No RM  : RM002
+    Nama   : Eka Putri
+    Umur   : 40 tahun
+    Poli   : Penyakit Dalam
+    Status : Menunggu
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+--- GRAPH RUJUKAN POLI (BFS / DFS) ---
+  1. Tampilkan Jaringan Rujukan
+  2. Telusuri BFS (Breadth First Search)
+  3. Telusuri DFS (Depth First Search)
+  4. Cari Jalur Rujukan Terpendek (BFS)
+  5. Cek Ada Jalur Rujukan (DFS)
+Pilih: 
+Jaringan Rujukan Poli (Graph):
+  Vertex (6):
+    [0] Umum
+    [1] Gigi
+    [2] Anak
+    [3] Penyakit Dalam
+    [4] Lab
+    [5] Apotek
+  Edge (arah rujukan):
+    Umum -> Gigi
+    Umum -> Anak
+    Umum -> Penyakit Dalam
+    Umum -> Lab
+    Umum -> Apotek
+    Gigi -> Umum
+    Gigi -> Apotek
+    Anak -> Umum
+    Anak -> Penyakit Dalam
+    Anak -> Lab
+    Anak -> Apotek
+    Penyakit Dalam -> Umum
+    Penyakit Dalam -> Lab
+    Penyakit Dalam -> Apotek
+    Lab -> Umum
+    Lab -> Apotek
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+--- GRAPH RUJUKAN POLI (BFS / DFS) ---
+  1. Tampilkan Jaringan Rujukan
+  2. Telusuri BFS (Breadth First Search)
+  3. Telusuri DFS (Depth First Search)
+  4. Cari Jalur Rujukan Terpendek (BFS)
+  5. Cek Ada Jalur Rujukan (DFS)
+Pilih: Poli awal (contoh: Umum): 
+Hasil BFS dari 'Umum' (Big O: O(V+E)):
+  Umum -> Gigi -> Anak -> Penyakit Dalam -> Lab -> Apotek
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+--- GRAPH RUJUKAN POLI (BFS / DFS) ---
+  1. Tampilkan Jaringan Rujukan
+  2. Telusuri BFS (Breadth First Search)
+  3. Telusuri DFS (Depth First Search)
+  4. Cari Jalur Rujukan Terpendek (BFS)
+  5. Cek Ada Jalur Rujukan (DFS)
+Pilih: Poli asal   : Poli tujuan : 
+Jalur rujukan terpendek (BFS) dari 'Umum' ke 'Apotek':
+  Umum -> Apotek
+  Jumlah langkah rujukan: 1
+  Kompleksitas BFS: O(V + E)
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+--- GRAPH RUJUKAN POLI (BFS / DFS) ---
+  1. Tampilkan Jaringan Rujukan
+  2. Telusuri BFS (Breadth First Search)
+  3. Telusuri DFS (Depth First Search)
+  4. Cari Jalur Rujukan Terpendek (BFS)
+  5. Cek Ada Jalur Rujukan (DFS)
+Pilih: Poli asal   : Poli tujuan : [SUKSES] Ada jalur rujukan dari 'Gigi' ke 'Lab' (DFS).
+  Kompleksitas DFS: O(V + E)
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+--- STATISTIK PASIEN ---
+  Total pasien (Linked List) : 5
+  Total pasien (Array)       : 5
+  Pasien dalam antrian       : 0
+  Riwayat pemeriksaan        : 0
+  Vertex graph rujukan       : 6
+  Kapasitas maksimal/bulan   : 150
+
+========================================
+  SISTEM MANAJEMEN ANTRIAN & REKAM MEDIS
+         KLINIK E-HEALTH (C++)
+========================================
+  1. Tambah Data Pasien
+  2. Cari Data Pasien
+  3. Update Data Pasien
+  4. Hapus Data Pasien
+  5. Tampilkan Semua Pasien (Linked List)
+  6. Tampilkan Data Pasien (Array)
+  7. Kelola Antrian Pasien (Queue)
+  8. Riwayat Medis (Stack)
+  9. Struktur Poli Klinik (Tree)
+ 10. Statistik Pasien
+ 11. Graph Rujukan Poli (BFS/DFS)
+ 12. Sorting Data Pasien
+ 13. Searching & Analisis Big O
+  0. Keluar
+========================================
+Pilih menu: 
+Terima kasih. Program selesai.

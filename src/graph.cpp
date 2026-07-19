@@ -1,240 +1,111 @@
 #include "../include/graph.h"
 #include <iostream>
 #include <queue>
-#include <stack>
 
-GraphRujukan::GraphRujukan() : jumlahVertex(0) {
-    for (int i = 0; i < MAX_VERTEX; i++) {
-        for (int j = 0; j < MAX_VERTEX; j++)
-            adj[i][j] = false;
-    }
+using namespace std;
+
+// Constructor
+Graph::Graph() {
+    // Tidak ada inisialisasi khusus
 }
 
-int GraphRujukan::indeksVertex(const std::string& nama) const {
-    for (int i = 0; i < jumlahVertex; i++) {
-        if (vertices[i] == nama || vertices[i].find(nama) != std::string::npos)
-            return i;
-    }
-    return -1;
+// Menambahkan hubungan antar poli (edge)
+void Graph::tambahEdge(int u, int v) {
+    adj[u].push_back(v);
+    adj[v].push_back(u);   // Graph tidak berarah
 }
 
-void GraphRujukan::inisialisasi() {
-    // Vertex: unit layanan klinik e-health
-    vertices[0] = "Umum";
-    vertices[1] = "Gigi";
-    vertices[2] = "Anak";
-    vertices[3] = "Penyakit Dalam";
-    vertices[4] = "Lab";
-    vertices[5] = "Apotek";
-    jumlahVertex = 6;
+// Menampilkan graph
+void Graph::tampilGraph() {
+    cout << "\n===== HUBUNGAN ANTAR POLI =====\n";
 
-    for (int i = 0; i < MAX_VERTEX; i++)
-        for (int j = 0; j < MAX_VERTEX; j++)
-            adj[i][j] = false;
+    const string namaPoli[MAX] = {
+        "Poli Umum",
+        "Poli Gigi",
+        "Poli Anak",
+        "Poli Penyakit Dalam"
+    };
 
-    // Edge: jalur rujukan antar unit (directed)
-    // Umum dapat merujuk ke spesialis
-    adj[0][1] = true; // Umum -> Gigi
-    adj[0][2] = true; // Umum -> Anak
-    adj[0][3] = true; // Umum -> Penyakit Dalam
-    adj[0][4] = true; // Umum -> Lab
-    adj[0][5] = true; // Umum -> Apotek
+    for (int i = 0; i < 4; i++) {
+        cout << namaPoli[i] << " -> ";
 
-    // Spesialis dapat merujuk balik / lintas
-    adj[1][0] = true; // Gigi -> Umum
-    adj[1][5] = true; // Gigi -> Apotek
-
-    adj[2][0] = true; // Anak -> Umum
-    adj[2][3] = true; // Anak -> Penyakit Dalam
-    adj[2][4] = true; // Anak -> Lab
-    adj[2][5] = true; // Anak -> Apotek
-
-    adj[3][0] = true; // Penyakit Dalam -> Umum
-    adj[3][4] = true; // Penyakit Dalam -> Lab
-    adj[3][5] = true; // Penyakit Dalam -> Apotek
-
-    adj[4][0] = true; // Lab -> Umum
-    adj[4][5] = true; // Lab -> Apotek
-}
-
-void GraphRujukan::tampilkan() const {
-    std::cout << "\nJaringan Rujukan Poli (Graph):\n";
-    std::cout << "  Vertex (" << jumlahVertex << "):\n";
-    for (int i = 0; i < jumlahVertex; i++)
-        std::cout << "    [" << i << "] " << vertices[i] << "\n";
-
-    std::cout << "  Edge (arah rujukan):\n";
-    bool adaEdge = false;
-    for (int i = 0; i < jumlahVertex; i++) {
-        for (int j = 0; j < jumlahVertex; j++) {
-            if (adj[i][j]) {
-                std::cout << "    " << vertices[i] << " -> " << vertices[j] << "\n";
-                adaEdge = true;
-            }
+        for (int j : adj[i]) {
+            cout << namaPoli[j] << " ";
         }
+
+        cout << endl;
     }
-    if (!adaEdge)
-        std::cout << "    [Tidak ada edge]\n";
 }
 
-void GraphRujukan::bfs(const std::string& mulai) const {
-    int start = indeksVertex(mulai);
-    if (start < 0) {
-        std::cout << "[ERROR] Poli '" << mulai << "' tidak ditemukan di graph.\n";
-        std::cout << "Vertex tersedia: Umum, Gigi, Anak, Penyakit Dalam, Lab, Apotek\n";
-        return;
-    }
+// Breadth First Search
+void Graph::BFS(int start) {
 
-    bool dikunjungi[MAX_VERTEX] = {false};
-    std::queue<int> q;
+    bool visited[MAX] = {false};
+    queue<int> q;
 
-    dikunjungi[start] = true;
+    const string namaPoli[MAX] = {
+        "Poli Umum",
+        "Poli Gigi",
+        "Poli Anak",
+        "Poli Penyakit Dalam"
+    };
+
+    visited[start] = true;
     q.push(start);
 
-    std::cout << "\nHasil BFS dari '" << vertices[start] << "' (Big O: O(V+E)):\n  ";
-    bool pertama = true;
+    cout << "\n===== BFS =====\n";
+
     while (!q.empty()) {
-        int v = q.front();
+
+        int node = q.front();
         q.pop();
-        if (!pertama) std::cout << " -> ";
-        std::cout << vertices[v];
-        pertama = false;
 
-        for (int i = 0; i < jumlahVertex; i++) {
-            if (adj[v][i] && !dikunjungi[i]) {
-                dikunjungi[i] = true;
-                q.push(i);
+        cout << namaPoli[node] << endl;
+
+        for (int next : adj[node]) {
+
+            if (!visited[next]) {
+                visited[next] = true;
+                q.push(next);
             }
+
         }
+
     }
-    std::cout << "\n";
+
 }
 
-void GraphRujukan::dfsRekursif(int v, bool dikunjungi[]) const {
-    dikunjungi[v] = true;
-    std::cout << vertices[v];
+// Fungsi bantu DFS
+void Graph::DFSUtil(int node, bool visited[]) {
 
-    bool pertama = true;
-    for (int i = 0; i < jumlahVertex; i++) {
-        if (adj[v][i] && !dikunjungi[i]) {
-            if (pertama) {
-                std::cout << " -> ";
-                pertama = false;
-            } else {
-                std::cout << " -> ";
-            }
-            dfsRekursif(i, dikunjungi);
+    const string namaPoli[MAX] = {
+        "Poli Umum",
+        "Poli Gigi",
+        "Poli Anak",
+        "Poli Penyakit Dalam"
+    };
+
+    visited[node] = true;
+
+    cout << namaPoli[node] << endl;
+
+    for (int next : adj[node]) {
+
+        if (!visited[next]) {
+            DFSUtil(next, visited);
         }
+
     }
+
 }
 
-void GraphRujukan::dfs(const std::string& mulai) const {
-    int start = indeksVertex(mulai);
-    if (start < 0) {
-        std::cout << "[ERROR] Poli '" << mulai << "' tidak ditemukan di graph.\n";
-        std::cout << "Vertex tersedia: Umum, Gigi, Anak, Penyakit Dalam, Lab, Apotek\n";
-        return;
-    }
+// Depth First Search
+void Graph::DFS(int start) {
 
-    bool dikunjungi[MAX_VERTEX] = {false};
-    std::cout << "\nHasil DFS dari '" << vertices[start] << "' (Big O: O(V+E)):\n  ";
-    dfsRekursif(start, dikunjungi);
-    std::cout << "\n";
-}
+    bool visited[MAX] = {false};
 
-void GraphRujukan::jalurTerpendek(const std::string& asal, const std::string& tujuan) const {
-    int start = indeksVertex(asal);
-    int end = indeksVertex(tujuan);
+    cout << "\n===== DFS =====\n";
 
-    if (start < 0 || end < 0) {
-        std::cout << "[ERROR] Nama poli tidak valid.\n";
-        std::cout << "Vertex tersedia: Umum, Gigi, Anak, Penyakit Dalam, Lab, Apotek\n";
-        return;
-    }
+    DFSUtil(start, visited);
 
-    if (start == end) {
-        std::cout << "[INFO] Asal dan tujuan sama: " << vertices[start] << "\n";
-        return;
-    }
-
-    bool dikunjungi[MAX_VERTEX] = {false};
-    int parent[MAX_VERTEX];
-    for (int i = 0; i < MAX_VERTEX; i++)
-        parent[i] = -1;
-
-    std::queue<int> q;
-    dikunjungi[start] = true;
-    q.push(start);
-
-    bool ketemu = false;
-    while (!q.empty() && !ketemu) {
-        int v = q.front();
-        q.pop();
-        for (int i = 0; i < jumlahVertex; i++) {
-            if (adj[v][i] && !dikunjungi[i]) {
-                dikunjungi[i] = true;
-                parent[i] = v;
-                q.push(i);
-                if (i == end) {
-                    ketemu = true;
-                    break;
-                }
-            }
-        }
-    }
-
-    if (!ketemu) {
-        std::cout << "[INFO] Tidak ada jalur rujukan dari '"
-                  << vertices[start] << "' ke '" << vertices[end] << "'.\n";
-        return;
-    }
-
-    // Rekonstruksi jalur dari parent
-    int jalur[MAX_VERTEX];
-    int panjang = 0;
-    for (int v = end; v != -1; v = parent[v])
-        jalur[panjang++] = v;
-
-    std::cout << "\nJalur rujukan terpendek (BFS) dari '"
-              << vertices[start] << "' ke '" << vertices[end] << "':\n  ";
-    for (int i = panjang - 1; i >= 0; i--) {
-        std::cout << vertices[jalur[i]];
-        if (i > 0) std::cout << " -> ";
-    }
-    std::cout << "\n  Jumlah langkah rujukan: " << (panjang - 1) << "\n";
-    std::cout << "  Kompleksitas BFS: O(V + E)\n";
-}
-
-bool GraphRujukan::adaJalur(const std::string& asal, const std::string& tujuan) const {
-    int start = indeksVertex(asal);
-    int end = indeksVertex(tujuan);
-
-    if (start < 0 || end < 0) {
-        std::cout << "[ERROR] Nama poli tidak valid.\n";
-        return false;
-    }
-    if (start == end) return true;
-
-    bool dikunjungi[MAX_VERTEX] = {false};
-    std::stack<int> st;
-    st.push(start);
-
-    while (!st.empty()) {
-        int v = st.top();
-        st.pop();
-        if (dikunjungi[v]) continue;
-        dikunjungi[v] = true;
-
-        if (v == end) return true;
-
-        for (int i = jumlahVertex - 1; i >= 0; i--) {
-            if (adj[v][i] && !dikunjungi[i])
-                st.push(i);
-        }
-    }
-    return false;
-}
-
-int GraphRujukan::getJumlahVertex() const {
-    return jumlahVertex;
 }

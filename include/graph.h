@@ -1,36 +1,23 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
-#include <string>
+#include <vector>
 
-// Graph: jaringan rujukan antar poli klinik e-health
-const int MAX_VERTEX = 10;
-
-class GraphRujukan {
+class Graph {
 private:
-    std::string vertices[MAX_VERTEX];
-    bool adj[MAX_VERTEX][MAX_VERTEX];
-    int jumlahVertex;
-
-    int indeksVertex(const std::string& nama) const;
-    void dfsRekursif(int v, bool dikunjungi[]) const;
+    static const int MAX = 10;
+    std::vector<int> adj[MAX];
 
 public:
-    GraphRujukan();
+    Graph();
 
-    // bangun graf rujukan poli default
-    void inisialisasi();
-    // tampilkan daftar vertex dan edge
-    void tampilkan() const;
-    // BFS: telusuri dari poli awal (level demi level)
-    void bfs(const std::string& mulai) const;
-    // DFS: telusuri dari poli awal (dalam dulu)
-    void dfs(const std::string& mulai) const;
-    // BFS: cari jalur rujukan terpendek antar dua poli
-    void jalurTerpendek(const std::string& asal, const std::string& tujuan) const;
-    // DFS: cek apakah ada jalur rujukan dari asal ke tujuan
-    bool adaJalur(const std::string& asal, const std::string& tujuan) const;
-    int getJumlahVertex() const;
+    void tambahEdge(int u, int v);
+    void tampilGraph();
+    void BFS(int start);
+    void DFS(int start);
+
+private:
+    void DFSUtil(int node, bool visited[]);
 };
 
 #endif

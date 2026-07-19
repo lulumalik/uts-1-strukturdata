@@ -10,24 +10,43 @@ private:
     int jumlah;
 
 public:
+    // Constructor
     ArrayPasien();
-    // fungsi untuk menambahkan data pasien
+
+    // ==========================
+    // CRUD Data Pasien
+    // ==========================
+
+    // Menambahkan data pasien
     bool tambah(const Pasien& p);
-    // fungsi untuk mencari data pasien
+
+    // Mencari data pasien berdasarkan No. RM
     bool cari(const std::string& noRM, Pasien& hasil) const;
-    // fungsi untuk mengupdate data pasien
+
+    // Mengupdate data pasien
     bool update(const std::string& noRM, const Pasien& pBaru);
+
+    // Menghapus data pasien
     bool hapus(const std::string& noRM);
-    // fungsi untuk menampilkan data pasien
+
+    // Menampilkan seluruh data pasien
     void tampilkan() const;
-    // fungsi untuk mendapatkan jumlah data pasien
+
+    // Mendapatkan jumlah pasien
     int getJumlah() const;
+
+    // Mengecek apakah No. RM sudah ada
     bool duplikat(const std::string& noRM) const;
 
-    // akses elemen untuk sorting & searching
-    Pasien getAt(int indeks) const;
-    void setAt(int indeks, const Pasien& p);
-    void tukar(int i, int j);
+    // ==========================
+    // SORTING (Bubble Sort)
+    // ==========================
+
+    // Mengurutkan berdasarkan Nama
+    void bubbleSortNama();
+
+    // Mengurutkan berdasarkan Nomor Rekam Medis
+    void bubbleSortNoRM();
 };
 
 #endif
