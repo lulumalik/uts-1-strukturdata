@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits>
+#include <vector>
 #include "../include/types.h"
 #include "../include/array.h"
 #include "../include/linkedlist.h"
@@ -7,6 +8,8 @@
 #include "../include/stack.h"
 #include "../include/tree.h"
 #include "../include/graph.h"
+#include "../include/database.h"
+#include "../include/sortsearch.h"
 
 using namespace std;
 
@@ -39,10 +42,11 @@ void tampilkanMenu() {
     cout << "  8. Riwayat Medis (Stack)\n";
     cout << "  9. Struktur Poli Klinik (Tree)\n";
     cout << " 10. Statistik Pasien\n";
-    cout << " 11. Bubble Sort Data Pasien\n";
-    cout << " 12. Tampilkan Graph\n";
-    cout << " 13. Breadth First Search (BFS)\n";
-    cout << " 14. Depth First Search (DFS)\n";
+    cout << " 11. Sorting Data Pasien\n";
+    cout << " 12. Searching dan Analisis Big O\n";
+    cout << " 13. Tampilkan Graph\n";
+    cout << " 14. Breadth First Search (BFS)\n";
+    cout << " 15. Depth First Search (DFS)\n";
     cout << "  0. Keluar\n";
     cout << "========================================\n";
     cout << "Pilih menu: ";
@@ -97,6 +101,13 @@ void tambahPasien() {
         return;
     }
 
+    if (!Database::simpan(p)) {
+        cout << "[ERROR] Gagal menyimpan ke database. Data dibatalkan.\n";
+        linkedList.hapus(p.noRM);
+        arrayPasien.hapus(p.noRM);
+        return;
+    }
+
     cout << "[SUKSES] Pasien '" << p.nama << "' berhasil ditambahkan.\n";
 }
 
@@ -143,6 +154,7 @@ void updatePasien() {
 
     linkedList.update(noRM, pBaru);
     arrayPasien.update(noRM, pBaru);
+    Database::update(pBaru);
     cout << "[SUKSES] Data pasien berhasil diupdate.\n";
 }
 
@@ -160,6 +172,7 @@ void hapusPasien() {
         return;
     }
 
+    Database::hapus(noRM);
     cout << "[SUKSES] Data pasien berhasil dihapus.\n";
 }
 
@@ -190,6 +203,8 @@ void kelolaAntrian() {
         }
 
         node->data.status = "Menunggu";
+        arrayPasien.update(noRM, node->data);
+        Database::update(node->data);
         cout << "[SUKSES] Pasien '" << node->data.nama << "' masuk antrian.\n";
 
     } else if (sub == 2) {
@@ -205,6 +220,7 @@ void kelolaAntrian() {
         Node* node = linkedList.cari(dilayani.noRM);
         if (node != nullptr) node->data.status = "Selesai";
         arrayPasien.update(dilayani.noRM, dilayani);
+        Database::update(dilayani);
 
         cout << "[SUKSES] Pasien '" << dilayani.nama << "' telah dilayani.\n";
         cout << "         Riwayat medis telah dicatat ke Stack.\n";
@@ -248,57 +264,26 @@ void statistikPasien() {
     cout << "  Total pasien (Array)       : " << arrayPasien.getJumlah() << "\n";
     cout << "  Pasien dalam antrian       : " << antrian.ukuran() << "\n";
     cout << "  Riwayat pemeriksaan        : " << riwayat.ukuran() << "\n";
-    cout << "  Vertex graph rujukan       : " << graphRujukan.getJumlahVertex() << "\n";
     cout << "  Kapasitas maksimal/bulan   : " << MAX_PASIEN << "\n";
+    cout << "  Database                   : data/klinik.db\n";
 }
 
-void kelolaGraphRujukan() {
-    int sub;
-    cout << "\n--- GRAPH RUJUKAN POLI (BFS / DFS) ---\n";
-    cout << "  1. Tampilkan Jaringan Rujukan\n";
-    cout << "  2. Telusuri BFS (Breadth First Search)\n";
-    cout << "  3. Telusuri DFS (Depth First Search)\n";
-    cout << "  4. Cari Jalur Rujukan Terpendek (BFS)\n";
-    cout << "  5. Cek Ada Jalur Rujukan (DFS)\n";
-    cout << "Pilih: ";
-    cin >> sub;
-    bersihkanBuffer();
+void muatDataDariDatabase() {
+    vector<Pasien> daftar;
+    if (!Database::muatSemua(daftar)) {
+        cout << "[INFO] Database kosong atau belum siap.\n";
+        return;
+    }
 
-    if (sub == 1) {
-        graphRujukan.tampilkan();
-    } else if (sub == 2) {
-        string mulai;
-        cout << "Poli awal (contoh: Umum): ";
-        getline(cin, mulai);
-        graphRujukan.bfs(mulai);
-    } else if (sub == 3) {
-        string mulai;
-        cout << "Poli awal (contoh: Umum): ";
-        getline(cin, mulai);
-        graphRujukan.dfs(mulai);
-    } else if (sub == 4) {
-        string asal, tujuan;
-        cout << "Poli asal   : ";
-        getline(cin, asal);
-        cout << "Poli tujuan : ";
-        getline(cin, tujuan);
-        graphRujukan.jalurTerpendek(asal, tujuan);
-    } else if (sub == 5) {
-        string asal, tujuan;
-        cout << "Poli asal   : ";
-        getline(cin, asal);
-        cout << "Poli tujuan : ";
-        getline(cin, tujuan);
-        if (graphRujukan.adaJalur(asal, tujuan)) {
-            cout << "[SUKSES] Ada jalur rujukan dari '" << asal
-                 << "' ke '" << tujuan << "' (DFS).\n";
-            cout << "  Kompleksitas DFS: O(V + E)\n";
-        } else {
-            cout << "[INFO] Tidak ada jalur rujukan dari '" << asal
-                 << "' ke '" << tujuan << "'.\n";
-        }
-    } else {
-        cout << "[ERROR] Pilihan tidak valid.\n";
+    for (const Pasien& p : daftar) {
+        if (arrayPasien.getJumlah() >= MAX_PASIEN) break;
+        if (linkedList.duplikat(p.noRM) || arrayPasien.duplikat(p.noRM)) continue;
+        linkedList.tambah(p);
+        arrayPasien.tambah(p);
+    }
+
+    if (!daftar.empty()) {
+        cout << "[INFO] " << daftar.size() << " data pasien dimuat dari database.\n";
     }
 }
 
@@ -356,10 +341,10 @@ void kelolaSorting() {
 
 void kelolaSearchingBigO() {
     int sub;
-    cout << "\n--- SEARCHING & ANALISIS BIG O ---\n";
-    cout << "  1. Bandingkan Linear vs Binary Search\n";
+    cout << "\n--- SEARCHING DAN ANALISIS BIG O ---\n";
+    cout << "  1. Bandingkan Linear Search dengan Binary Search\n";
     cout << "  2. Tampilkan Analisis Big O Sistem\n";
-    cout << "  3. Sort No RM dulu lalu Binary Search\n";
+    cout << "  3. Sort No RM lalu Binary Search\n";
     cout << "Pilih: ";
     cin >> sub;
     bersihkanBuffer();
@@ -399,99 +384,90 @@ void kelolaSearchingBigO() {
 int main() {
     treePoli.inisialisasi();
 
-// Hubungan antar poli
-graph.tambahEdge(0,1); // Umum - Gigi
-graph.tambahEdge(0,2); // Umum - Anak
-graph.tambahEdge(1,3); // Gigi - Penyakit Dalam
-graph.tambahEdge(2,3); // Anak - Penyakit Dalam
+    // Hubungan antar poli
+    graph.tambahEdge(0, 1); // Umum - Gigi
+    graph.tambahEdge(0, 2); // Umum - Anak
+    graph.tambahEdge(1, 3); // Gigi - Penyakit Dalam
+    graph.tambahEdge(2, 3); // Anak - Penyakit Dalam
+
+    if (!Database::buka("data/klinik.db")) {
+        cout << "[ERROR] Tidak bisa membuka database. Program tetap jalan (tanpa simpan).\n";
+    } else {
+        muatDataDariDatabase();
+    }
 
     cout << "Selamat datang di Sistem Klinik E-Health\n";
     cout << "Struktur Poli Klinik:\n";
     treePoli.tampilkan();
 
-   int pilihan;
+    int pilihan;
 
-do {
-    tampilkanMenu();
-    cin >> pilihan;
-    bersihkanBuffer();
+    do {
+        tampilkanMenu();
+        cin >> pilihan;
+        bersihkanBuffer();
 
-    switch (pilihan) {
+        switch (pilihan) {
+            case 1:
+                tambahPasien();
+                break;
+            case 2:
+                cariPasien();
+                break;
+            case 3:
+                updatePasien();
+                break;
+            case 4:
+                hapusPasien();
+                break;
+            case 5:
+                cout << "\n--- DATA PASIEN (LINKED LIST) ---\n";
+                linkedList.tampilkan();
+                break;
+            case 6:
+                cout << "\n--- DATA PASIEN (ARRAY) ---\n";
+                arrayPasien.tampilkan();
+                break;
+            case 7:
+                kelolaAntrian();
+                break;
+            case 8:
+                riwayatMedis();
+                break;
+            case 9:
+                cout << "\n--- STRUKTUR POLI KLINIK (TREE) ---\n";
+                treePoli.tampilkan();
+                break;
+            case 10:
+                statistikPasien();
+                break;
+            case 11:
+                kelolaSorting();
+                break;
+            case 12:
+                kelolaSearchingBigO();
+                break;
+            case 13:
+                cout << "\n--- GRAPH HUBUNGAN POLI ---\n";
+                graph.tampilGraph();
+                break;
+            case 14:
+                cout << "\n--- BFS GRAPH ---\n";
+                graph.BFS(0);
+                break;
+            case 15:
+                cout << "\n--- DFS GRAPH ---\n";
+                graph.DFS(0);
+                break;
+            case 0:
+                cout << "\nTerima kasih. Program selesai.\n";
+                break;
+            default:
+                cout << "[ERROR] Menu tidak valid.\n";
+                break;
+        }
+    } while (pilihan != 0);
 
-        case 1:
-            tambahPasien();
-            break;
-
-        case 2:
-            cariPasien();
-            break;
-
-        case 3:
-            updatePasien();
-            break;
-
-        case 4:
-            hapusPasien();
-            break;
-
-        case 5:
-            cout << "\n--- DATA PASIEN (LINKED LIST) ---\n";
-            linkedList.tampilkan();
-            break;
-
-        case 6:
-            cout << "\n--- DATA PASIEN (ARRAY) ---\n";
-            arrayPasien.tampilkan();
-            break;
-
-        case 7:
-            kelolaAntrian();
-            break;
-
-        case 8:
-            riwayatMedis();
-            break;
-
-        case 9:
-            cout << "\n--- STRUKTUR POLI KLINIK (TREE) ---\n";
-            treePoli.tampilkan();
-            break;
-
-        case 10:
-            statistikPasien();
-            break;
-
-        case 11:
-            cout << "\n--- DATA PASIEN SETELAH BUBBLE SORT ---\n";
-            arrayPasien.bubbleSortNama();
-            arrayPasien.tampilkan();
-            break;
-
-        case 12:
-            cout << "\n--- GRAPH HUBUNGAN POLI ---\n";
-            graph.tampilGraph();
-            break;
-
-        case 13:
-            cout << "\n--- BFS GRAPH ---\n";
-            graph.BFS(0);
-            break;
-
-        case 14:
-            cout << "\n--- DFS GRAPH ---\n";
-            graph.DFS(0);
-            break;
-
-        case 0:
-            cout << "\nTerima kasih. Program selesai.\n";
-            break;
-
-        default:
-            cout << "[ERROR] Menu tidak valid.\n";
-            break;
-    }
-
-} while (pilihan != 0);
-
-return 0;
+    Database::tutup();
+    return 0;
 }

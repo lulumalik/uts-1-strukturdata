@@ -19,12 +19,7 @@ build.bat
 bin\e-health-klinik.exe
 ```
 
-### Manual (g++)
-
-```bash
-g++ -std=c++17 -Wall -Wextra -Iinclude src/*.cpp -o bin/e-health-klinik.exe
-bin/e-health-klinik.exe
-```
+Data pasien tersimpan otomatis di `data/klinik.db` (SQLite) — tidak perlu input ulang setelah restart.
 
 ## Fitur Sistem
 
@@ -39,7 +34,7 @@ bin/e-health-klinik.exe
 9. **Statistik Pasien**
 10. **Graph Rujukan Poli** - BFS & DFS untuk jaringan rujukan
 11. **Sorting Data Pasien** - Bubble, Selection, Insertion Sort
-12. **Searching & Big O** - Linear vs Binary Search + analisis kompleksitas
+12. **Searching & Big O** - Linear Search dan Binary Search + analisis kompleksitas
 
 ## Struktur Data & Algoritma
 
@@ -52,4 +47,4 @@ bin/e-health-klinik.exe
 | Graph | Vertex + Edge | Jalur rujukan antar unit |
 | BFS / DFS | Traversal graph | Rujukan terpendek / cek jalur |
 | Sorting | O(n²) | Daftar pasien terurut |
-| Searching | O(n) vs O(log n) | Cari No RM lebih efisien |
+| Searching | O(n) dan O(log n) | Cari No RM lebih efisien |

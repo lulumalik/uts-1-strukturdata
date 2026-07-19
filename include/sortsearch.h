@@ -16,7 +16,7 @@ void bubbleSort(ArrayPasien& arr, KriteriaSort kriteria);
 void selectionSort(ArrayPasien& arr, KriteriaSort kriteria);
 void insertionSort(ArrayPasien& arr, KriteriaSort kriteria);
 
-// Searching: linear O(n) vs binary O(log n)
+// Searching: Linear Search O(n) dan Binary Search O(log n)
 bool linearSearch(const ArrayPasien& arr, const std::string& noRM,
                   Pasien& hasil, int& perbandingan);
 bool binarySearch(const ArrayPasien& arr, const std::string& noRM,

@@ -17,7 +17,7 @@ Siapkan data contoh di catatan (copy-paste cepat).
 
 ## Bagian A — Fondasi (Faris / siapa saja) ±2 menit
 
-1. Tunjukkan menu utama (0–13).
+1. Tunjukkan menu utama (0–15).
 2. **Menu 1** — tambah 3 pasien cepat:
 
 | No RM | Nama | Umur | Poli | Status |
@@ -33,40 +33,36 @@ Siapkan data contoh di catatan (copy-paste cepat).
 
 ---
 
-## Bagian B — Graph BFS/DFS (Lulu) ±3 menit
+## Bagian B — Graph BFS/DFS (Lulu) ±2 menit
 
-**Menu 11**
+1. **Menu 13** — tampilkan jaringan rujukan (vertex + edge).
+2. **Menu 14** — BFS dari Poli Umum  
+   Expected: Umum → Gigi → Anak → Penyakit Dalam (urutan level)
+3. **Menu 15** — DFS dari Poli Umum  
+   Expected: traversal mendalam antar poli
 
-1. Pilih **1** — tampilkan jaringan rujukan (vertex + edge).
-2. Pilih **2** — BFS dari `Umum`  
-   Expected: `Umum -> Gigi -> Anak -> Penyakit Dalam -> Lab -> Apotek`
-3. Pilih **4** — jalur terpendek `Umum` → `Apotek`  
-   Expected: 1 langkah (`Umum -> Apotek`)
-4. Pilih **5** — cek jalur `Gigi` → `Lab`  
-   Expected: ada jalur (DFS)
-
-**Kalimat kunci:** *“BFS cari jalur rujukan terpendek; DFS cek apakah rujukan memungkinkan. Kompleksitas O(V+E).”*
+**Kalimat kunci:** *“BFS telusuri rujukan per level; DFS telusuri jalur mendalam. Kompleksitas O(V+E).”*
 
 ---
 
 ## Bagian C — Sorting & Searching / Big O (Nabil) ±3 menit
 
-### Sorting — Menu 12
+### Sorting — Menu 11
 
-1. Pastikan sudah ada ≥5 pasien (tambah lagi jika perlu: RM004, RM005).
-2. **Bubble Sort** by **Nama** (12 → 1 → 2) → tunjukkan urutan A–Z.
-3. **Selection Sort** by **Umur** (12 → 2 → 3) → umur naik.
-4. **Insertion Sort** by **No RM** (12 → 3 → 1) → RM001…RM005.
+1. Pastikan sudah ada ≥3 pasien.
+2. **Bubble Sort** by **Nama** (11 → 1 → 2) → tunjukkan urutan A–Z.
+3. **Selection Sort** by **Umur** (11 → 2 → 3) → umur naik.
+4. **Insertion Sort** by **No RM** (11 → 3 → 1) → RM001…RM00x.
 
 **Kalimat kunci:** *“Sorting O(n²) membantu petugas membaca daftar pasien teratur.”*
 
-### Searching — Menu 13
+### Searching — Menu 12
 
-1. Pilih **1**, cari `RM003` → bandingkan jumlah perbandingan Linear vs Binary.
+1. Pilih **1**, cari `RM003` → bandingkan jumlah perbandingan Linear Search dengan Binary Search.
 2. Pilih **2** → tampilkan ringkasan Big O sistem.
 3. (Opsional) Pilih **3** → sort No RM lalu search lagi.
 
-**Kalimat kunci:** *“Linear O(n), Binary O(log n) tapi wajib data terurut No RM.”*
+**Kalimat kunci:** *“Linear Search O(n), Binary Search O(log n), tapi binary wajib data terurut No RM.”*
 
 ---
 

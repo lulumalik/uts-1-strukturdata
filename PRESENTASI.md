@@ -39,15 +39,15 @@ Rujukan: Graph BFS/DFS · Laporan: Sort + Search
 - Vertex: Umum, Gigi, Anak, Penyakit Dalam, Lab, Apotek
 - BFS: jalur terpendek
 - DFS: cek ada jalur
-- Screenshot / live demo Menu 11
+- Screenshot / live demo Menu 13–15
 
 ## Slide 7 — Demo Sorting (Nabil)
-- Bubble / Selection / Insertion
+- Menu 11: Bubble / Selection / Insertion
 - Kriteria: No RM, Nama, Umur
 - Manfaat: daftar pasien terurut untuk petugas
 
 ## Slide 8 — Searching & Big O (Nabil)
-- Linear O(n) vs Binary O(log n)
+- Menu 12: Linear Search O(n) dan Binary Search O(log n)
 - Syarat binary: data terurut No RM
 - Contoh: RM003 → bandingkan jumlah perbandingan
 

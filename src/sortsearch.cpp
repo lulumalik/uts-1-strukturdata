@@ -163,6 +163,9 @@ void bandingkanPencarian(const ArrayPasien& arr, const std::string& noRM) {
     std::cout << "    Big O        : O(log n)\n";
     std::cout << "    Catatan      : Array harus sudah diurutkan berdasarkan No RM.\n";
 
+    std::cout << "\n  Ringkasan: Linear Search O(n), Binary Search O(log n).\n";
+    std::cout << "  Binary Search lebih efisien jika data sudah terurut.\n";
+
     if (ketemuLinear && !ketemuBinary) {
         std::cout << "\n  [INFO] Binary Search gagal menemukan data.\n";
         std::cout << "         Pastikan data sudah di-sort berdasarkan No RM terlebih dahulu.\n";

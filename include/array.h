@@ -38,6 +38,12 @@ public:
     // Mengecek apakah No. RM sudah ada
     bool duplikat(const std::string& noRM) const;
 
+    // Akses elemen untuk algoritma sorting/searching
+    const Pasien& getAt(int index) const;
+    Pasien& getAt(int index);
+    void setAt(int index, const Pasien& p);
+    void tukar(int i, int j);
+
     // ==========================
     // SORTING (Bubble Sort)
     // ==========================

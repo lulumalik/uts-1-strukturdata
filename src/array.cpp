@@ -101,6 +101,26 @@ bool ArrayPasien::duplikat(const std::string& noRM) const {
     return false;
 }
 
+const Pasien& ArrayPasien::getAt(int index) const {
+    return data[index];
+}
+
+Pasien& ArrayPasien::getAt(int index) {
+    return data[index];
+}
+
+void ArrayPasien::setAt(int index, const Pasien& p) {
+    if (index >= 0 && index < jumlah)
+        data[index] = p;
+}
+
+void ArrayPasien::tukar(int i, int j) {
+    if (i < 0 || j < 0 || i >= jumlah || j >= jumlah) return;
+    Pasien temp = data[i];
+    data[i] = data[j];
+    data[j] = temp;
+}
+
 // =======================================================
 // Bubble Sort Berdasarkan Nama
 // =======================================================
