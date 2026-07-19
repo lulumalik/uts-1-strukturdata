@@ -6,6 +6,7 @@
 #include "../include/queue.h"
 #include "../include/stack.h"
 #include "../include/tree.h"
+#include "../include/graph.h"
 
 using namespace std;
 
@@ -15,6 +16,8 @@ LinkedListPasien linkedList;
 QueueAntrian antrian;
 StackRiwayat riwayat;
 TreePoli treePoli;
+Graph graph;
+
 
 void bersihkanBuffer() {
     cin.clear();
@@ -36,6 +39,10 @@ void tampilkanMenu() {
     cout << "  8. Riwayat Medis (Stack)\n";
     cout << "  9. Struktur Poli Klinik (Tree)\n";
     cout << " 10. Statistik Pasien\n";
+    cout << " 11. Bubble Sort Data Pasien\n";
+    cout << " 12. Tampilkan Graph\n";
+    cout << " 13. Breadth First Search (BFS)\n";
+    cout << " 14. Depth First Search (DFS)\n";
     cout << "  0. Keluar\n";
     cout << "========================================\n";
     cout << "Pilih menu: ";
@@ -250,43 +257,99 @@ void statistikPasien() {
 int main() {
     treePoli.inisialisasi();
 
+// Hubungan antar poli
+graph.tambahEdge(0,1); // Umum - Gigi
+graph.tambahEdge(0,2); // Umum - Anak
+graph.tambahEdge(1,3); // Gigi - Penyakit Dalam
+graph.tambahEdge(2,3); // Anak - Penyakit Dalam
+
     cout << "Selamat datang di Sistem Klinik E-Health\n";
     cout << "Struktur Poli Klinik:\n";
     treePoli.tampilkan();
 
-    int pilihan;
-    do {
-        tampilkanMenu();
-        cin >> pilihan;
-        bersihkanBuffer();
+   int pilihan;
 
-        switch (pilihan) {
-            case 1:  tambahPasien(); break;
-            case 2:  cariPasien(); break;
-            case 3:  updatePasien(); break;
-            case 4:  hapusPasien(); break;
-            case 5:
-                cout << "\n--- DATA PASIEN (LINKED LIST) ---\n";
-                linkedList.tampilkan();
-                break;
-            case 6:
-                cout << "\n--- DATA PASIEN (ARRAY) ---\n";
-                arrayPasien.tampilkan();
-                break;
-            case 7:  kelolaAntrian(); break;
-            case 8:  riwayatMedis(); break;
-            case 9:
-                cout << "\n--- STRUKTUR POLI KLINIK (TREE) ---\n";
-                treePoli.tampilkan();
-                break;
-            case 10: statistikPasien(); break;
-            case 0:
-                cout << "\nTerima kasih. Program selesai.\n";
-                break;
-            default:
-                cout << "[ERROR] Menu tidak valid.\n";
-        }
-    } while (pilihan != 0);
+do {
+    tampilkanMenu();
+    cin >> pilihan;
+    bersihkanBuffer();
 
-    return 0;
+    switch (pilihan) {
+
+        case 1:
+            tambahPasien();
+            break;
+
+        case 2:
+            cariPasien();
+            break;
+
+        case 3:
+            updatePasien();
+            break;
+
+        case 4:
+            hapusPasien();
+            break;
+
+        case 5:
+            cout << "\n--- DATA PASIEN (LINKED LIST) ---\n";
+            linkedList.tampilkan();
+            break;
+
+        case 6:
+            cout << "\n--- DATA PASIEN (ARRAY) ---\n";
+            arrayPasien.tampilkan();
+            break;
+
+        case 7:
+            kelolaAntrian();
+            break;
+
+        case 8:
+            riwayatMedis();
+            break;
+
+        case 9:
+            cout << "\n--- STRUKTUR POLI KLINIK (TREE) ---\n";
+            treePoli.tampilkan();
+            break;
+
+        case 10:
+            statistikPasien();
+            break;
+
+        case 11:
+            cout << "\n--- DATA PASIEN SETELAH BUBBLE SORT ---\n";
+            arrayPasien.bubbleSortNama();
+            arrayPasien.tampilkan();
+            break;
+
+        case 12:
+            cout << "\n--- GRAPH HUBUNGAN POLI ---\n";
+            graph.tampilGraph();
+            break;
+
+        case 13:
+            cout << "\n--- BFS GRAPH ---\n";
+            graph.BFS(0);
+            break;
+
+        case 14:
+            cout << "\n--- DFS GRAPH ---\n";
+            graph.DFS(0);
+            break;
+
+        case 0:
+            cout << "\nTerima kasih. Program selesai.\n";
+            break;
+
+        default:
+            cout << "[ERROR] Menu tidak valid.\n";
+            break;
+    }
+
+} while (pilihan != 0);
+
+return 0;
 }
